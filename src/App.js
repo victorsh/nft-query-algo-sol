@@ -109,6 +109,23 @@ const sol_get_token_meta = async () => {
   console.log(res.data)
 }
 
+const sol_get_nft_data = async () => {
+  let res = await axios.get('https://api.solscan.io/transfer/token?token_address=4FFTTwc8uudqoUmWycn6HUggTCoTkvjDRP9z7NmmpG3q&type=all&offset=0&limit=10&cluster=')
+  console.log(res.data)
+}
+
+const sol_get_nft_detail = async () => {
+  let res = await axios.get('https://api.solscan.io/nft/detail?mint=4FFTTwc8uudqoUmWycn6HUggTCoTkvjDRP9z7NmmpG3q&cluster=')
+  console.log(res.data)
+}
+
+// !!! This method will return token info and metadata
+const sol_get_nft_metadata = async () => {
+  let res = await axios.get('https://api.solscan.io/account?address=4FFTTwc8uudqoUmWycn6HUggTCoTkvjDRP9z7NmmpG3q&cluster=')
+  console.log(res.data.data.metadata)
+  console.log(res.data.data.tokenInfo)
+}
+
 const sol_get_collection = async () => {
   let res = await axios.get('https://api.solscan.io/collection/nft?sortBy=nameDec&collectionId=0f60da652811994d2466073d30ee22976f545739b92aeb08a27aa5db03898b61&offset=0&limit=20&cluster=')
   let nfts = res.data.data
@@ -124,9 +141,12 @@ const sol_get_collection = async () => {
 
 // algo_nft_owners()
 // algo_get_asset()
-algo_asset_txns()
+// algo_asset_txns()
 // sol_get_tokens()
 // sol_get_token_holders()
 // sol_get_token_meta()
+// sol_get_nft_data()
+// sol_get_nft_detail()
+sol_get_nft_metadata()
 // sol_get_collection()
 export default App;
